@@ -1,11 +1,12 @@
-import type { JSX } from "react"
+import type { JSX } from "react";
+import { Contact } from "./Contact";
+import { Icon } from "./Icon";
+import { HeaderElements } from "./HeaderElements";
 
 export const Header = (): JSX.Element => {
     return <>
-        <p>Home</p>
-        <p>About</p>
-        <p>Contact</p>
-        <p>Projects</p>
-        <p>Hire Me</p>
+        <Icon/>
+        <HeaderElements/>
+        <Contact/>
     </>
 }

@@ -1,5 +1,7 @@
 body {
   margin: 0;
   padding: 0;
-  font-size: 3rem;
+  font-size: calc(10px + 2vmin);
+  color: #FFFEFA;
+  background: linear-gradient(to right, #330092 65%, #500ede 100%);
 }
