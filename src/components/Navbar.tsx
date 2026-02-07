@@ -1,13 +1,15 @@
-const Navbar: React.FC = () => {
+const Navbar = () => {
   return (
     <nav className="navbar">
-      <h1>MyPortfolio</h1>
-      <ul>
-        <li><a href="#about">About</a></li>
-        <li><a href="#projects">Projects</a></li>
-      </ul>
-    </nav>
-  )
-}
+      <span className="logo">ELIYASMD</span>
 
-export default Navbar
+      <div className="nav-links">
+        <a href="#hero">Home</a>
+        <a href="#about">About</a>
+        <a href="#projects">Projects</a>
+      </div>
+    </nav>
+  );
+};
+
+export default Navbar;
