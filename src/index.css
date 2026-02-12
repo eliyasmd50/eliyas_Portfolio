@@ -18,6 +18,7 @@ body {
   background-color: var(--bg-color);
   color: var(--text-main);
   font-family: "Segoe UI", sans-serif;
+  scroll-behavior: smooth;
 }
 
 
@@ -86,9 +87,51 @@ body {
   animation: spin 1s linear infinite;
 }
 
+.navbar,
+.nav-links a,
 .logo {
-  font-weight: 600;
-  letter-spacing: 1px;
+  font-family: 'Work Sans', sans-serif;
+  user-select: none;
+  transition: all 0.2s ease;
+}
+
+.logo {
+  display: inline-block;           /* Treat like a button */
+  text-decoration: none;
+  font-weight: 200;  /* Thin for lean letters */
+  font-style: normal; /* or italic if you want slant */
+  font-size: 2rem;
+  letter-spacing: 2px;
+  color: #ffffff;
+  text-transform: uppercase;
+  position: relative;
+  cursor: pointer;
+  padding: 0.5rem 1rem;            /* Makes it feel like a button */
+  border-radius: 8px;              /* Rounded corners */
+  transition: all 0.2s ease;       /* Smooth transition for hover/tap */
+  user-select: none;               /* Prevent text selection */
+  background-color: transparent;   /* Default */
+  box-shadow: none; 
+}
+
+.logo::after {
+    display: none;
+}
+
+.logo:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  transform: scale(1.05);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); 
+}
+
+.logo:active {
+  transform: scale(0.98);
+  background-color: rgba(255, 255, 255, 0.15);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+.logo:hover,
+.logo:active {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25), 0 0 8px rgba(165, 214, 167, 0.4);
 }
 
 .nav-links {
@@ -96,13 +139,36 @@ body {
 }
 
 .nav-links a {
-  color: #2b1d14;
-  font-weight: 500;
+  display: inline-block;           /* Button-like feel */
   text-decoration: none;
+  font-size: 1rem;
+  font-weight: 400;
+  letter-spacing: 1px;
+  color: #ffffff;
+  padding: 0.4rem 0.8rem;          /* Padding like buttons */
+  border-radius: 8px;
+  transition: all 0.2s ease;
+  cursor: pointer;
+  user-select: none;
+  background-color: transparent;   /* Default background */
+  box-shadow: none;
 }
 
 .nav-links a:hover {
-  opacity: 0.7;
+  background-color: rgba(255, 255, 255, 0.1);
+  transform: scale(1.05);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+
+.nav-links a:active {
+  transform: scale(0.98);
+  background-color: rgba(255, 255, 255, 0.15);
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+}
+
+.nav-links a:hover,
+.nav-links a:active {
+  box-shadow: 0 4px 12px rgba(0,0,0,0.25), 0 0 6px rgba(165, 214, 167, 0.4);
 }
 
 .footer {
@@ -169,6 +235,7 @@ body {
   .nav-links {
     display: flex;   /* show nav links */
     gap: 2rem;
+    align-items: center;
   }
   .nav-links a {
     color: white;
@@ -193,6 +260,10 @@ body {
 
   .project-card {
     padding: 2rem;
+  }
+
+  .logo:hover::after {
+    width: 100%;
   }
 
 }
