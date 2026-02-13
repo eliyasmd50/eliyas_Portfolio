@@ -9,20 +9,21 @@ import Contact from "./components/Contact";
 
 function App() {
   const [loading, setLoading] = useState(true);
+  const [showPage, setShowPage] = useState(false);
 
   useEffect(() => {
-    const timer = setTimeout(() => setLoading(false), 2000);
+    const timer = setTimeout(() => {
+      setLoading(false);
+      setTimeout(() => { setShowPage(true); }, 500);
+    }, 6000);
     return () => clearTimeout(timer);
   }, []);
 
-  if (loading) return <Loader />;
-
   return (
     <>
+      {loading && <Loader />}
       <Navbar />
-      <div className="page-wrapper">
-        <div className="vertical-line"></div>
-
+      <div className={`page-wrapper ${showPage ? "fade-in" : "hidden-page"}`}>
         <main className="content">
           <Hero />
           <About />

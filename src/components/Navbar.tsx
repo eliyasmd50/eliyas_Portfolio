@@ -33,7 +33,7 @@ const Navbar = () => {
           className="hire-btn"
           onClick={() => scrollToSection("contact")}
         >
-          Hire Me
+          Write Me
         </button>
       </div>
     </nav>
