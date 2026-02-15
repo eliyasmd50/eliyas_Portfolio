@@ -1,8 +1,10 @@
 interface NavbarProps {
   show: boolean;
+  theme: "light" | "dark";
+  toggleTheme: () => void;
 }
 
-const Navbar = ({ show }: NavbarProps) => {
+const Navbar = ({ show, theme, toggleTheme }: NavbarProps) => {
   const scrollToSection = (id: string) => {
     const element = document.getElementById(id);
 
@@ -14,7 +16,6 @@ const Navbar = ({ show }: NavbarProps) => {
     }
   };
 
-
   return (
     <nav
       className={`navbar ${show ? "navbar-show" : "navbar-hide"}`}
@@ -25,14 +26,22 @@ const Navbar = ({ show }: NavbarProps) => {
 
       <div className="nav-links">
         <a onClick={() => scrollToSection("hero")}>Home</a>
-        <a href="#about">About</a>
-        <a href="#projects">Projects</a>
+        <a onClick={() => scrollToSection("about")}>About</a>
+        <a onClick={() => scrollToSection("projects")}>Projects</a>
+
         <button
           className="hire-btn"
           onClick={() => scrollToSection("contact")}
         >
           Write Me
         </button>
+
+        {/* 🌙 Theme Toggle Button */}
+        <button
+          className={`theme-toggle ${theme}`}
+          onClick={toggleTheme}
+          aria-label="Toggle Theme"
+        />
       </div>
     </nav>
   );

@@ -5,19 +5,31 @@
   --text-muted: #5a4032;
 }
 
+[data-theme="dark"] {
+  --bg-color: #0e0e0e;
+  --line-color: rgba(255, 255, 255, 0.2);
+  --text-main: #ffffff;
+  --text-muted: #cfcfcf;
+}
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  transition: background-color 0.3s ease, 
+              color 0.3s ease, 
+              border-color 0.3s ease;
 }
 
 html,
 body {
   width: 100%;
   height: 100%;
-  color: #1a1a1a;
   font-family: "Segoe UI", sans-serif;
   scroll-behavior: smooth;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  transition: background-color 0.4s ease, color 0.4s ease;
 }
 
 body {
@@ -53,7 +65,7 @@ body {
   position: relative;
   min-height: 100vh;
   padding: 5rem 0;
-  color: #1a1a1a;
+  color: var(--text-main);
   padding: 5rem 1.5rem;
 }
 
@@ -64,12 +76,12 @@ body {
 .section h1,
 .section h2,
 .section h3 {
-  color: #111111;
+  color: var(--text-main);
   font-weight: 600;
 }
 
 .section p {
-  color: #444444;
+  color: var(--text-muted);
 }
 
 
@@ -94,6 +106,8 @@ body {
   border-bottom: 1px solid #e5e7eb;
 
   transition: transform 0.5s ease, opacity 0.5s ease;
+  background-color: var(--bg-color);
+  color: var(--text-color);
 }
 .navbar-hide {
   transform: translateY(-100%);
@@ -149,7 +163,7 @@ body {
   font-style: normal; /* or italic if you want slant */
   font-size: 2rem;
   letter-spacing: 2px;
-  color: #111111; /* strong dark */
+  color: var(--text-main);
   text-transform: uppercase;
   position: relative;
   cursor: pointer;
@@ -157,7 +171,7 @@ body {
   border-radius: 8px;              /* Rounded corners */
   transition: all 0.2s ease;       /* Smooth transition for hover/tap */
   user-select: none;               /* Prevent text selection */
-  background-color: transparent;   /* Default */
+  background-color: var(--bg-color);   /* Default */
   box-shadow: none; 
 }
 
@@ -166,14 +180,14 @@ body {
 }
 
 .logo:hover {
-  background-color: rgba(255, 255, 255, 0.1);
+  background-color: var(--bg-color);
   transform: scale(1.05);
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); 
 }
 
 .logo:active {
   transform: scale(0.98);
-  background-color: rgba(255, 255, 255, 0.15);
+  background-color: var(--bg-color);
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
 }
 .logo:hover,
@@ -191,8 +205,7 @@ body {
   font-size: 1rem;
   font-weight: 400;
   letter-spacing: 1px;
-  /* color: #374151;  */
-  color: #333333;
+  color: var(--text-color);
   padding: 0.4rem 0.8rem;          /* Padding like buttons */
   border-radius: 8px;
   transition: all 0.2s ease;
@@ -200,18 +213,18 @@ body {
   user-select: none;
   /* background-color: transparent; */
   box-shadow: none;
-  background-color: rgba(0, 0, 0, 0.05);
+  background-color: var(--bg-color)
 }
 
 .nav-links a:hover {
-  background-color: rgba(255, 255, 255, 0.1);
+  background-color: var(--bg-color);
   transform: scale(1.05);
   box-shadow: 0 4px 12px rgba(0,0,0,0.2);
 }
 
 .nav-links a:active {
   transform: scale(0.98);
-  background-color: rgba(255, 255, 255, 0.15);
+  background-color: var(--bg-color);
   box-shadow: 0 2px 6px rgba(0,0,0,0.2);
 }
 
@@ -229,8 +242,7 @@ body {
 
   background: rgba(150, 150, 150, 0.45); /* heavier grey */
   backdrop-filter: blur(10px);
-
-  color: #2b1d14;
+  color: var(--text-main);
   padding: 1.5rem;
   text-align: center;
 }
@@ -254,7 +266,7 @@ body {
   text-align: center;
 
   text-decoration: none;
-  color: #2b1d14;
+  color: var(--text-main);
   font-size: 1.1rem;
   font-weight: 500;
 
@@ -272,15 +284,15 @@ body {
   font-size: 1rem;
   padding: 0.5rem 1rem;
   border-radius: 8px;
-  border: none;
   cursor: pointer;
-  background-color: #16a34a; /* Modern green */
-  color: #ffffff;
   transition: all 0.2s ease;
+  background-color: var(--bg-color);
+  color: var(--text-main);
+  border: none;
 }
 
 .hire-btn:hover {
-  background-color: #15803d;
+  background-color: var(--bg-color);
   transform: scale(1.07);
   box-shadow: 0 6px 14px rgba(0, 0, 0, 0.25);
 }
@@ -308,7 +320,7 @@ body {
   margin: 0 auto 2rem auto;
   font-size: 1rem;
   line-height: 1.6;
-  color: #eeeeee;
+  color: var(--text-main);
 }
 
 /* Contact Links Container */
@@ -330,14 +342,14 @@ body {
 
   transition: all 0.2s ease;
   width: 220px;
-  background-color: #ffffff;
-  color: #111111;
-  border: 1px solid #e5e7eb;
+  background-color: var(--bg-color);
+  color: var(--text-main);
+  border: 1px solid var(--line-color);
 }
 
 /* Hover */
 .contact-item:hover {
-  background-color: rgba(255, 255, 255, 0.15);
+  background-color: var(--bg-color);
   transform: scale(1.05);
   box-shadow: 0 6px 14px rgba(0, 0, 0, 0.25);
 }
@@ -354,6 +366,7 @@ body {
   align-items: center;
   text-align: center;
   padding: 0 1.5rem;
+  color: var(--text-main);
 }
 
 .hero-content h1 {
@@ -373,6 +386,38 @@ body {
   opacity: 0;
 }
 
+.theme-toggle {
+  width: 50px;
+  height: 25px;
+  border-radius: 50px;
+  border: none;
+  cursor: pointer;
+  position: relative;
+  background: #ccc;
+  transition: background 0.3s ease;
+}
+
+.theme-toggle::after {
+  content: "";
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: white;
+  position: absolute;
+  top: 2.5px;
+  left: 3px;
+  transition: transform 0.3s ease;
+}
+
+.theme-toggle.dark {
+  background: #0f172a;
+}
+
+.theme-toggle.dark::after {
+  transform: translateX(25px);
+}
+
+
 @keyframes fadeUp {
   from {
     opacity: 0;
@@ -384,6 +429,11 @@ body {
   }
 }
 
+.about,
+.projects,
+.contact {
+  background-color: var(--bg-color);
+}
 
 
 @media (min-width: 768px) {
@@ -408,7 +458,7 @@ body {
   }
   .nav-links a {
     cursor: pointer;
-    color: white;
+    color: var(--text-main);
     text-decoration: none;
     font-size: 1rem;
     transition: 0.3s;

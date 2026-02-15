@@ -7,14 +7,21 @@ import Footer from "./components/Footer";
 import Loader from "./components/Loader";
 import Contact from "./components/Contact";
 
+type Theme = "light" | "dark";
+
 function App() {
   const [loading, setLoading] = useState(true);
   const [showPage, setShowPage] = useState(false);
   const [showNav, setShowNav] = useState(false);
 
+  // 🔥 THEME STATE
+  const [theme, setTheme] = useState<Theme>("light");
+
   const heroRef = useRef<HTMLDivElement | null>(null);
 
-  // Loader Logic
+  // -------------------------
+  // LOADER LOGIC
+  // -------------------------
   useEffect(() => {
     const timer = setTimeout(() => {
       setLoading(false);
@@ -26,7 +33,35 @@ function App() {
     return () => clearTimeout(timer);
   }, []);
 
-  // Intersection Observer for Hero
+  // -------------------------
+  // SYSTEM + SAVED THEME
+  // -------------------------
+  useEffect(() => {
+    const savedTheme = localStorage.getItem("theme") as Theme | null;
+
+    if (savedTheme) {
+      setTheme(savedTheme);
+    } else {
+      const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+      setTheme(prefersDark ? "dark" : "light");
+    }
+  }, []);
+
+  // -------------------------
+  // APPLY THEME TO HTML
+  // -------------------------
+  useEffect(() => {
+    document.documentElement.setAttribute("data-theme", theme);
+    localStorage.setItem("theme", theme);
+  }, [theme]);
+
+  const toggleTheme = () => {
+    setTheme(prev => (prev === "light" ? "dark" : "light"));
+  };
+
+  // -------------------------
+  // HERO INTERSECTION OBSERVER
+  // -------------------------
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
@@ -48,8 +83,8 @@ function App() {
     <>
       {loading && <Loader />}
 
-      {/* Navbar receives showNav */}
-      <Navbar show={showNav} />
+      {/* Pass theme + toggle to Navbar */}
+      <Navbar show={showNav} theme={theme} toggleTheme={toggleTheme} />
 
       <div className={`page-wrapper ${showPage ? "fade-in" : "hidden-page"}`}>
         <main className="content">
