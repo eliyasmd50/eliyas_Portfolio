@@ -1,32 +1,30 @@
+interface NavbarProps {
+  show: boolean;
+}
 
-const Navbar = () => {
+const Navbar = ({ show }: NavbarProps) => {
   const scrollToSection = (id: string) => {
     const element = document.getElementById(id);
 
     if (element) {
       element.scrollIntoView({
         behavior: "smooth",
-        block: "start"
+        block: "start",
       });
     }
   };
 
-  const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: "smooth"});
-  }
-  return (
-    <nav className="navbar">
-      <span 
-      className="logo"
-      onClick={scrollToTop}
-      >𝑬𝑳𝑰𝒀𝑨𝑺</span>
 
-      {/* Desktop links */}
+  return (
+    <nav
+      className={`navbar ${show ? "navbar-show" : "navbar-hide"}`}
+    >
+      <span className="logo" onClick={() => scrollToSection("hero")}>
+        𝑬𝑳𝑰𝒀𝑨𝑺
+      </span>
+
       <div className="nav-links">
-        <a 
-        href="#hero"
-        onClick={scrollToTop}
-        >Home</a>
+        <a onClick={() => scrollToSection("hero")}>Home</a>
         <a href="#about">About</a>
         <a href="#projects">Projects</a>
         <button
