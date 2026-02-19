@@ -14,15 +14,18 @@ const Navbar = ({ show, theme, toggleTheme }: NavbarProps) => {
         block: "start",
       });
     }
+    if(document.activeElement instanceof HTMLElement) {
+      document.activeElement.blur();
+    }
   };
 
   return (
     <nav
-      className={`navbar ${show ? "navbar-show" : "navbar-hide"}`}
+      className={`navbar ${show ? "navbar-scrolled" : "navbar-top"}`}
     >
-      <span className="logo" onClick={() => scrollToSection("hero")}>
+      <button className="logo" onClick={() => scrollToSection("hero")}>
         𝑬𝑳𝑰𝒀𝑨𝑺
-      </span>
+      </button>
 
       <div className="nav-links">
         <a onClick={() => scrollToSection("hero")}>Home</a>

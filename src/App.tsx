@@ -13,15 +13,9 @@ function App() {
   const [loading, setLoading] = useState(true);
   const [showPage, setShowPage] = useState(false);
   const [showNav, setShowNav] = useState(false);
-
-  // 🔥 THEME STATE
   const [theme, setTheme] = useState<Theme>("light");
 
   const heroRef = useRef<HTMLDivElement | null>(null);
-
-  // -------------------------
-  // LOADER LOGIC
-  // -------------------------
   useEffect(() => {
     const timer = setTimeout(() => {
       setLoading(false);
@@ -32,10 +26,17 @@ function App() {
 
     return () => clearTimeout(timer);
   }, []);
-
-  // -------------------------
-  // SYSTEM + SAVED THEME
-  // -------------------------
+  useEffect(() => {
+    if (!loading) {
+      requestAnimationFrame(() => {
+        window.scrollTo({
+          top: 0,
+          left: 0,
+          behavior: "auto",
+        });
+      });
+    }
+  }, [loading]);
   useEffect(() => {
     const savedTheme = localStorage.getItem("theme") as Theme | null;
 
@@ -46,10 +47,6 @@ function App() {
       setTheme(prefersDark ? "dark" : "light");
     }
   }, []);
-
-  // -------------------------
-  // APPLY THEME TO HTML
-  // -------------------------
   useEffect(() => {
     document.documentElement.setAttribute("data-theme", theme);
     localStorage.setItem("theme", theme);
@@ -58,47 +55,48 @@ function App() {
   const toggleTheme = () => {
     setTheme(prev => (prev === "light" ? "dark" : "light"));
   };
+useEffect(() => {
+  if (loading) return;
 
-  // -------------------------
-  // HERO INTERSECTION OBSERVER
-  // -------------------------
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        setShowNav(!entry.isIntersecting);
-      },
-      { threshold: 0.6 }
-    );
+  const observer = new IntersectionObserver(
+    ([entry]) => {
+      setShowNav(!entry.isIntersecting);
+    },
+    { threshold: 0 }
+  );
 
-    if (heroRef.current) {
-      observer.observe(heroRef.current);
-    }
+  if (heroRef.current) {
+    observer.observe(heroRef.current);
+  }
 
-    return () => {
-      if (heroRef.current) observer.unobserve(heroRef.current);
-    };
-  }, []);
+  return () => {
+    if (heroRef.current) observer.unobserve(heroRef.current);
+  };
+}, [loading]);
 
   return (
     <>
-      {loading && <Loader />}
+      {loading ? (
+        <Loader />
+      ) : (
+        <>
+          <Navbar show={showNav} theme={theme} toggleTheme={toggleTheme} />
 
-      {/* Pass theme + toggle to Navbar */}
-      <Navbar show={showNav} theme={theme} toggleTheme={toggleTheme} />
+          <div className={`page-wrapper ${showPage ? "fade-in" : "hidden-page"}`}>
+            <main className="content">
+              <div ref={heroRef}>
+                <Hero />
+              </div>
 
-      <div className={`page-wrapper ${showPage ? "fade-in" : "hidden-page"}`}>
-        <main className="content">
-          <div ref={heroRef}>
-            <Hero />
+              <About />
+              <Projects />
+              <Contact />
+            </main>
           </div>
 
-          <About />
-          <Projects />
-          <Contact />
-        </main>
-      </div>
-
-      <Footer />
+          <Footer />
+        </>
+      )}
     </>
   );
 }
