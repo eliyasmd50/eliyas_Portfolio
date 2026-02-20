@@ -22,7 +22,7 @@ function App() {
       setTimeout(() => {
         setShowPage(true);
       }, 500);
-    }, 6000);
+    }, 3000);
 
     return () => clearTimeout(timer);
   }, []);

@@ -105,16 +105,16 @@ body {
   transition: background 0.3s ease, backdrop-filter 0.3s ease, box-shadow 0.3s ease;
   background-color: var(--bg-color);
   color: var(--text-color);
-}
-.navbar-hide {
-  transform: translateY(-100%);
   opacity: 0;
-  pointer-events: none;
+  transform: translateY(-20px);
+  animation: fadeSlideDown 0.8s ease forwards;
 }
 
-.navbar-show {
-  transform: translateY(0);
-  opacity: 1;
+@keyframes fadeSlideDown {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .navbar a {
@@ -393,6 +393,12 @@ body {
   font-size: 2rem;
   font-weight: 700;
   margin-bottom: 1rem;
+  color: #6366F1;
+}
+.hero-content h2 {
+  font-size: 1.5rem;
+  font-weight: 500;
+  margin-bottom: 0.5rem; 
 }
 
 .hero-content p {
@@ -453,6 +459,38 @@ body {
 .projects,
 .contact {
   background-color: var(--bg-color);
+}
+
+.cv-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 22px;
+  background-color: #cfcfcf; /* brand color */
+  color: #4F46E5;
+  font-weight: 600;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  border-radius: 50px;
+  margin-top: 40px;
+  border-color: #4F46E5;
+  border-width: 1px;
+  border-style: solid;
+}
+
+.cv-btn:hover {
+  background-color: #4F46E5;
+  transform: translateY(-2px);
+  color: #cfcfcf;
+}
+
+.arrow {
+  transition: transform 0.3s ease;
+}
+
+.cv-btn:hover .arrow {
+  transform: translateY(4px);
 }
 
 
