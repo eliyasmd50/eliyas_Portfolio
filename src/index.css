@@ -28,7 +28,7 @@ body {
   font-family: "Segoe UI", sans-serif;
   scroll-behavior: smooth;
   background-color: var(--bg-color);
-  color: var(--text-color);
+  color: var(--text-main);
   transition: background-color 0.4s ease, color 0.4s ease;
 }
 
@@ -104,7 +104,7 @@ body {
   backdrop-filter: blur(10px);
   transition: background 0.3s ease, backdrop-filter 0.3s ease, box-shadow 0.3s ease;
   background-color: var(--bg-color);
-  color: var(--text-color);
+  color: var(--text-main);
   opacity: 0;
   transform: translateY(-20px);
   animation: fadeSlideDown 0.8s ease forwards;
@@ -201,7 +201,6 @@ body {
 
 .logo:hover {
   background-color: var(--bg-color);
-  transform: scale(1.05);
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); 
 }
 
@@ -225,7 +224,7 @@ body {
   font-size: 1rem;
   font-weight: 400;
   letter-spacing: 1px;
-  color: var(--text-color);
+  color: var(--text-main);
   padding: 0.4rem 0.8rem;          /* Padding like buttons */
   border-radius: 8px;
   transition: all 0.2s ease;
@@ -556,6 +555,12 @@ body {
   transform: translateY(-5px);
   background: rgba(255, 255, 255, 0.2);
 }
+/* Hide mobile elements on desktop */
+.mobile-toggle,
+.hamburger,
+.mobile-menu {
+  display: none;
+}
 
 @media (max-width: 480px) {
   .social-btn {
@@ -568,6 +573,7 @@ body {
 @media (min-width: 768px) {
   
   .navbar {
+    position: fixed;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -622,6 +628,83 @@ body {
     font-size: 1.2rem;
   }
 
+}
+
+/* Mobile Styles */
+@media (max-width: 768px) {
+
+  /* Hide desktop nav links */
+  .nav-links.desktop {
+    display: none;
+  }
+
+  /* Navbar layout for mobile */
+  .navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  /* Show mobile toggle */
+  .mobile-toggle {
+    display: block;
+    position: relative;
+    z-index: 1001;
+  }
+
+  /* Center Logo */
+  .logo {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  /* Show Hamburger */
+  .hamburger {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    cursor: pointer;
+    z-index: 1001;
+  }
+
+  .hamburger span {
+    width: 25px;
+    height: 3px;
+    background: var(--text-main);
+    transition: background 0.3s ease;
+  }
+
+  /* Fullscreen Menu */
+  .mobile-menu {
+    display: flex;
+    position: fixed;
+    inset: 0;
+    background: var(--bg);
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    transform: translateX(100%);
+    transition: 0.4s ease;
+    z-index: 1000;
+  }
+
+  .mobile-menu.open {
+    transform: translateX(0);
+  }
+
+    /* Close button */
+  .close-menu {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-size: 2rem;
+    background: none;
+    border: none;
+    color: var(--text-main);
+    cursor: pointer;
+  }
 }
 
 

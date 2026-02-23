@@ -6,7 +6,8 @@ const Hero: React.FC = () => {
       <div className="hero-content">
         <h2>Hi, I'm Mohamed Eliyas</h2>
         <h1>Fullstack Developer</h1>
-        <p>Passionate about building fast, secure, and maintainable web solutions.</p>
+        <p>passionate about crafting
+            modern web applications from idea to deployment.</p>
         <SocialButtons />
       </div>
     </section>
