@@ -37,9 +37,9 @@ const Navbar = ({ show, theme, toggleTheme }: NavbarProps) => {
 
         {/* Desktop Links */}
         <div className="nav-links desktop">
-          <a onClick={() => scrollToSection("hero")}>Home</a>
+          <a onClick={() => scrollToSection("hero")}>Resume</a>
           <a onClick={() => scrollToSection("about")}>About</a>
-          <a onClick={() => scrollToSection("projects")}>Projects</a>
+          <a onClick={() => scrollToSection("works")}>Works</a>
 
           <button
             className="hire-btn"
@@ -85,9 +85,9 @@ const Navbar = ({ show, theme, toggleTheme }: NavbarProps) => {
         >
           ×
         </button>
-        <a onClick={() => scrollToSection("hero")}>Home</a>
+        <a onClick={() => scrollToSection("hero")}>Resume</a>
         <a onClick={() => scrollToSection("about")}>About</a>
-        <a onClick={() => scrollToSection("projects")}>Projects</a>
+        <a onClick={() => scrollToSection("works")}>Works</a>
         <button
           className="hire-btn"
           onClick={() => scrollToSection("contact")}

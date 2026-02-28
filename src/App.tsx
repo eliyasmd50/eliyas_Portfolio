@@ -2,7 +2,7 @@ import { useEffect, useState, useRef } from "react";
 import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
 import About from "./components/About";
-import Projects from "./components/Projects";
+import Works from "./components/Works";
 import Footer from "./components/Footer";
 import Loader from "./components/Loader";
 import Contact from "./components/Contact";
@@ -89,7 +89,7 @@ useEffect(() => {
               </div>
 
               <About />
-              <Projects />
+              <Works />
               <Contact />
             </main>
           </div>
