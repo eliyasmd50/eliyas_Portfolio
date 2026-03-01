@@ -15,21 +15,21 @@ type Project = {
 
 const companies: Company[] = [
   {
-    name: "TechCorp Solutions",
+    name: "Photon Interactive Pvt. Ltd.",
     role: "Full Stack Developer",
-    duration: "2022 - 2023",
+    duration: "2025 - Present",
     description: "Worked on scalable e-commerce platforms using React + NestJS.",
   },
   {
-    name: "IVR Systems Inc.",
-    role: "Backend Developer",
-    duration: "2021 - 2022",
+    name: "Sensiple Software Solutions",
+    role: "Junior Developer",
+    duration: "2021 - 2024",
     description: "Developed APIs for IVR systems focusing on reliability and performance.",
   },
 ];
 
 const projects: Project[] = [
-  { title: "Nature Portfolio", technologies: "React, TypeScript, CSS", link: "#" },
+  { title: "Personal Portfolio", technologies: "React, TypeScript, CSS, Bootstrap", link: "https://eliyasmd50.github.io/eliyas_Portfolio/" },
   { title: "React Dashboard", technologies: "React, Redux, Chart.js", link: "#" },
   { title: "Landing Page", technologies: "React, HTML, CSS", link: "#" },
 ];
@@ -49,7 +49,7 @@ const Works: React.FC = () => {
                 <div className="card-body">
                   <h5 className="card-title">{company.name}</h5>
                   <h6 className="card-subtitle mb-2">{company.role}</h6>
-                  <span className="text-muted">{company.duration}</span>
+                  <span className="duration">{company.duration}</span>
                   <p className="card-text mt-2">{company.description}</p>
                 </div>
               </div>

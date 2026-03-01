@@ -1,4 +1,4 @@
-import { FaGithub, FaLinkedin, FaTwitter } from "react-icons/fa";
+import { FaGithub, FaLinkedin, FaEnvelope  } from "react-icons/fa";
 
 const SocialButtons = () => {
   return (
@@ -28,12 +28,11 @@ const SocialButtons = () => {
         <FaLinkedin />
       </a>
       <a
-        href="https://twitter.com/yourusername"
-        target="_blank"
-        rel="noopener noreferrer"
+        href="mailto:eliyasmohamed50@gmail.com"
         className="social-btn"
+        aria-label="Send Email"
       >
-        <FaTwitter />
+        <FaEnvelope />
       </a>
     </div>
     </div>
