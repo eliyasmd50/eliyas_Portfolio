@@ -9,7 +9,9 @@ type Company = {
 
 type Project = {
   title: string;
-  technologies: string;
+  eyebrow: string;
+  description: string;
+  technologies: string[];
   link?: string;
 };
 
@@ -29,58 +31,48 @@ const companies: Company[] = [
 ];
 
 const projects: Project[] = [
-  { title: "Personal Portfolio", technologies: "React, TypeScript, CSS, Bootstrap", link: "https://eliyasmd50.github.io/eliyas_Portfolio/" },
-  { title: "React Dashboard", technologies: "React, Redux, Chart.js", link: "#" },
-  { title: "Landing Page", technologies: "React, HTML, CSS", link: "#" },
+  {
+    title: "Shaji Tax Associates",
+    eyebrow: "Featured project / 2026",
+    description: "A clear, trustworthy digital presence for a tax advisory and business compliance firm, designed to turn complex services into confident enquiries.",
+    technologies: ["Responsive web design", "Service discovery", "Enquiry flow"],
+    link: "https://www.shajitaxassociates.com/",
+  },
 ];
 
 const Works: React.FC = () => {
   return (
-    <section id="works" className="py-5 works-section">
-      <div className="container">
-        <h2 className="text-center mb-5">My Works</h2>
-
-        {/* Work Experience */}
-        <h3 className="mb-4">Work Experience</h3>
-        <div className="row g-4 mb-5">
+    <section id="works" className="works-section section-wrap">
+      <div className="section-label">Selected work <span>03</span></div>
+      <div className="works-heading"><h2>Where I&apos;ve<br /><em>made an impact.</em></h2><p>A few chapters from my professional journey and the kind of problems I enjoy solving.</p></div>
+      <div className="experience-list">
           {companies.map((company, index) => (
-            <div className="col-md-6" key={index}>
-              <div className="card custom-card h-100">
-                <div className="card-body">
-                  <h5 className="card-title">{company.name}</h5>
-                  <h6 className="card-subtitle mb-2">{company.role}</h6>
-                  <span className="duration">{company.duration}</span>
-                  <p className="card-text mt-2">{company.description}</p>
-                </div>
-              </div>
+            <div className="experience-row" key={index}>
+              <span className="experience-date">{company.duration}</span>
+              <div><h3>{company.name}</h3><p className="experience-role">{company.role}</p><p>{company.description}</p></div>
+              <span className="row-arrow">↗</span>
             </div>
           ))}
-        </div>
-
-        {/* Personal Projects */}
-        <h3 className="mb-4">Personal Projects</h3>
-        <div className="row g-4">
+      </div>
+      <div className="project-heading"><span>Featured project</span><span>A live product built for a real business</span></div>
+      <div className="project-list">
           {projects.map((project, index) => (
-            <div className="col-md-6 col-lg-4" key={index}>
-              <div className="card custom-card h-100">
-                <div className="card-body">
-                  <h5 className="card-title">{project.title}</h5>
-                  <p className="card-text">{project.technologies}</p>
-                  {project.link && (
-                    <a
-                      href={project.link}
-                      className="card-link"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      View Project
-                    </a>
-                  )}
-                </div>
+            <div className="project-item" key={index}>
+              <div className="project-preview" aria-hidden="true">
+                <span className="preview-bar"><i /><i /><i /></span>
+                <span className="preview-brand">ST<span>A</span></span>
+                <span className="preview-rule" />
+                <span className="preview-copy">Tax advisory<br /><b>& compliance</b></span>
+                <span className="preview-button">ENQUIRE NOW</span>
+              </div>
+              <div className="project-details">
+                <span className="project-eyebrow">{project.eyebrow}</span>
+                <h3>{project.title}</h3><p>{project.description}</p>
+                <div className="project-tags">{project.technologies.map((technology) => <span key={technology}>{technology}</span>)}</div>
+                {project.link && <a className="project-link" href={project.link} target="_blank" rel="noopener noreferrer">Visit live site <span>↗</span></a>}
               </div>
             </div>
           ))}
-        </div>
       </div>
     </section>
   );
