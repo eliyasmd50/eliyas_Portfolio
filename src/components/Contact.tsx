@@ -32,22 +32,11 @@ const Contact = () => {
   };
 
   return (
-    <section id="contact" className="contact-section py-5">
-      <div className="container">
-        <div className="row align-items-center gy-4">
-
-          {/* LEFT SIDE */}
-          <div className="col-12 col-lg-4 text-center text-lg-start">
-            <h2 className="fw-semibold mb-3">Let’s Work Together</h2>
-            <p className="text-secondary mb-0">
-              Feel free to reach out for collaborations or opportunities.
-            </p>
-          </div>
-
-          {/* RIGHT SIDE */}
-          <div className="col-12 col-lg-8">
-            <div className="card border-0 shadow-sm">
-              <div className="card-body p-4 p-md-5">
+    <section id="contact" className="contact-section section-wrap">
+      <div className="section-label">Contact <span>04</span></div>
+      <div className="contact-layout">
+        <div className="contact-copy"><h2>Have a good<br /><em>idea?</em></h2><p>Tell me about it. I&apos;m always open to thoughtful collaborations, ambitious products, and good conversations.</p><a href="mailto:eliyasmohamed50@gmail.com">eliyasmohamed50@gmail.com ↗</a></div>
+        <div className="contact-form-wrap">
 
                 {submitted ? (
                   <div className="alert alert-success text-center mb-0">
@@ -65,11 +54,8 @@ const Contact = () => {
 
                     <input type="hidden" name="_captcha" value="true" />
 
-                    <div className="row">
-                      <div className="col-12 col-md-6 mb-3">
-                        <label className="form-label small text-muted">
-                          Full Name
-                        </label>
+                    <div className="form-row">
+                      <div><label>Full name</label>
                         <input
                           type="text"
                           name="name"
@@ -80,10 +66,7 @@ const Contact = () => {
                         />
                       </div>
 
-                      <div className="col-12 col-md-6 mb-3">
-                        <label className="form-label small text-muted">
-                          Email Address
-                        </label>
+                      <div><label>Email address</label>
                         <input
                           type="email"
                           name="email"
@@ -93,10 +76,7 @@ const Contact = () => {
                       </div>
                     </div>
 
-                    <div className="mb-4">
-                      <label className="form-label small text-muted">
-                        Message
-                      </label>
+                    <div className="message-field"><label>Message</label>
                       <textarea
                         name="message"
                         rows={5}
@@ -107,22 +87,15 @@ const Contact = () => {
                       ></textarea>
                     </div>
 
-                    <div className="d-grid d-md-flex justify-content-md-end">
-                      <button
-                        type="submit"
-                        className="btn btn-dark px-4"
+                    <div className="form-submit"><button type="submit" className="primary-button"
                         disabled={loading}
                       >
-                        {loading ? "Sending..." : "Send Message"}
+                        {loading ? "Sending..." : "Send message ↗"}
                       </button>
                     </div>
 
                   </form>
                 )}
-
-              </div>
-            </div>
-          </div>
 
         </div>
       </div>

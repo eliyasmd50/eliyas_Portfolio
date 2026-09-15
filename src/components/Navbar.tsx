@@ -1,12 +1,11 @@
 import { useState } from "react";
+import { FiArrowUpRight, FiMenu, FiX } from "react-icons/fi";
 
 interface NavbarProps {
   show: boolean;
-  theme: "light" | "dark";
-  toggleTheme: () => void;
 }
 
-const Navbar = ({ show, theme, toggleTheme }: NavbarProps) => {
+const Navbar = ({ show }: NavbarProps) => {
   const [menuOpen, setMenuOpen] = useState(false);
 
   const scrollToSection = (id: string) => {
@@ -28,72 +27,26 @@ const Navbar = ({ show, theme, toggleTheme }: NavbarProps) => {
 
   return (
     <>
-      <nav className={`navbar ${show ? "navbar-scrolled" : "navbar-top"}`}>
-
-        {/* LEFT SIDE (Desktop keeps original order) */}
+      <nav className={`navbar ${show ? "navbar-scrolled" : "navbar-hero"}`}>
         <button className="logo" onClick={() => scrollToSection("hero")}>
-          𝑬𝑳𝑰𝒀𝑨𝑺
+          <span className="logo-mark"><span>M</span><span>E</span></span>
+          <span className="logo-type">ELIYAS <small>FULL-STACK DEV</small></span>
         </button>
-
-        {/* Desktop Links */}
-        <div className="nav-links desktop">
-          <a onClick={() => scrollToSection("hero")}>Resume</a>
-          <a onClick={() => scrollToSection("about")}>About</a>
-          <a onClick={() => scrollToSection("works")}>Works</a>
-
-          <button
-            className="hire-btn"
-            onClick={() => scrollToSection("contact")}
-          >
-            Write Me
-          </button>
-
-          {/* Theme Toggle (DESKTOP POSITION — stays right) */}
-          <button
-            className={`theme-toggle ${theme}`}
-            onClick={toggleTheme}
-            aria-label="Toggle Theme"
-          />
+        <div className="nav-links">
+          <button onClick={() => scrollToSection("about")}>About</button>
+          <button onClick={() => scrollToSection("works")}>Experience</button>
+          <button onClick={() => scrollToSection("contact")}>Contact</button>
+          <a className="nav-cta" href="mailto:eliyasmohamed50@gmail.com">Let&apos;s talk <FiArrowUpRight /></a>
         </div>
-
-        {/* Mobile Only Elements */}
-        <button
-          className={`theme-toggle mobile-toggle ${theme}`}
-          onClick={toggleTheme}
-          aria-label="Toggle Theme"
-        />
-
-        <div
-          className={`hamburger ${menuOpen ? "active" : ""}`}
-          onClick={() => setMenuOpen(!menuOpen)}
-        >
-          <span />
-          <span />
-          <span />
-        </div>
-
+        <button className="menu-toggle" onClick={() => setMenuOpen(!menuOpen)} aria-label={menuOpen ? "Close menu" : "Open menu"}>
+          {menuOpen ? <FiX /> : <FiMenu />}
+        </button>
       </nav>
-
-      {/* 📱 Fullscreen Mobile Menu */}
       <div className={`mobile-menu ${menuOpen ? "open" : ""}`}>
-
-          {/* ❌ Close Button */}
-        <button
-          className="close-menu"
-          onClick={() => setMenuOpen(false)}
-          aria-label="Close Menu"
-        >
-          ×
-        </button>
-        <a onClick={() => scrollToSection("hero")}>Resume</a>
-        <a onClick={() => scrollToSection("about")}>About</a>
-        <a onClick={() => scrollToSection("works")}>Works</a>
-        <button
-          className="hire-btn"
-          onClick={() => scrollToSection("contact")}
-        >
-          Write Me
-        </button>
+        <button onClick={() => scrollToSection("about")}>About</button>
+        <button onClick={() => scrollToSection("works")}>Experience</button>
+        <button onClick={() => scrollToSection("contact")}>Contact</button>
+        <a href="mailto:eliyasmohamed50@gmail.com">Let&apos;s talk <FiArrowUpRight /></a>
       </div>
     </>
   );
